@@ -1,28 +1,42 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view />
+    <modal v-if="showModal"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import modal from "./components/modal";
+import {mapGetters} from "vuex"
 
 export default {
   name: 'App',
+  computed: {
+    ...mapGetters ({
+      showModal: "showModal"
+    })
+  },
   components: {
-    HelloWorld
+    modal
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+  #app {
+    margin: 20px 0 60px;
+  }
+
+  button {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 3px;
+    background: darkslategray;
+    color: #fff;
+    cursor: pointer;
+  }
+
 </style>
